@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: web-app
+  name: web-app
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: web-app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: web-app
+    spec:
+      containers:
+      - image: tiagostello/web-app
+        imagePullPolicy: Always
+        name: web-app
+        ports:
+        - containerPort: 80
